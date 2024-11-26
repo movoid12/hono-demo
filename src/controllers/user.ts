@@ -2,7 +2,7 @@ import type { Context } from "hono";
 
 import { z } from "zod";
 
-import { BAD_REQUEST_MESSAGE, CREATED } from "@/utils/constants";
+import { httpStatusCode, httpStatusMessages } from "@/utils/constants";
 
 const userSchema = z.object({
   name: z.string(),
@@ -25,9 +25,9 @@ export function createUserController(c: Context) {
           .map(issue => `( ${issue.path} ) : ${issue.message}`)
           .join(", ")}`;
 
-        throw new Error(errorMessage, { cause: new Error(BAD_REQUEST_MESSAGE) });
+        throw new Error(errorMessage, { cause: httpStatusCode.BAD_REQUEST });
       }
 
-      return c.json(parseResult.data, CREATED);
+      return c.json({ message: httpStatusMessages.CREATED }, httpStatusCode.CREATED);
     });
 }

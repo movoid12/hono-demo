@@ -20,13 +20,11 @@ export default function configureOpenAPI(app: AppOpenApi) {
         url: "/doc",
       },
       layout: "classic",
-      theme: "elysiajs",
+      theme: "kepler",
       defaultHttpClient: {
         targetKey: "javascript",
         clientKey: "fetch",
       },
-      showSidebar: true,
-      withDefaultFonts: true,
     }),
   );
 }

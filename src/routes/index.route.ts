@@ -3,33 +3,27 @@ import { createRoute, z } from "@hono/zod-openapi";
 import { createRouter } from "@/lib/createApp";
 import { httpStatusCode, httpStatusMessages } from "@/utils/constants";
 
-import userRoutes from "./userRoutes";
-
-// eslint-disable-next-line unused-imports/no-unused-vars
-const userSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
+const indexSchema = z.object({
+  message: z.string(),
 });
 
-const usersSchema = z.object({ users: z.array(z.string()) });
-
 const index = createRouter().openapi(createRoute({
-  tags: ["Users"],
+  tags: ["Index"],
   method: "get",
-  path: "/api/users",
+  path: "/",
   responses: {
     [httpStatusCode.OK]: {
       content: {
         "application/json": {
-          schema: usersSchema,
+          schema: indexSchema,
         },
       },
-      description: "Users API: Returns a list of users",
+      description: "Index API Response",
     },
   },
 }), (c) => {
   //* handler
-  return c.json({ users: ["John", "Jane", "Bob", "Alex"] }, httpStatusCode.OK);
+  return c.json({ message: httpStatusMessages.OK }, httpStatusCode.OK);
 });
 
 export default index;

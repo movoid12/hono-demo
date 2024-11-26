@@ -1,4 +1,5 @@
 import index from "@/routes/index.route";
+import users from "@/routes/users/users.index";
 
 import configureOpenAPI from "./lib/configure-openapi";
 import createApp from "./lib/createApp";
@@ -11,6 +12,7 @@ configureOpenAPI(app);
 
 const routes = [
   index,
+  users,
 ];
 
 routes.forEach((route) => {

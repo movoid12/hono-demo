@@ -1,3 +1,5 @@
+import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
+
 //* * HTTP status codes
 export const httpStatusCode = {
   INTERNAL_SERVER_ERROR: 500,
@@ -29,3 +31,8 @@ export const httpStatusMessages = {
   CREATED: "Created",
   UNPROCESSABLE_ENTITY: "Unprocessable Entity",
 } as const;
+
+export const notFoundSchema
+= createMessageObjectSchema(
+  httpStatusMessages.NOT_FOUND,
+);

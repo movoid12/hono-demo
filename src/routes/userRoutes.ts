@@ -2,8 +2,7 @@
 
 import { Hono } from "hono";
 
-import { createUserController, getUsersController } from "@/controllers/user.js";
-import { CREATED, CREATED_MESSAGE } from "@/utils/constants.js";
+import { createUserController, getUsersController } from "@/controllers/user";
 
 const userRoutes = new Hono();
 

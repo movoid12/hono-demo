@@ -1,47 +1,29 @@
-//* * http status codes
+//* * HTTP status codes
+export const httpStatusCode = {
+  INTERNAL_SERVER_ERROR: 500,
+  GATEWAY_TIMEOUT: 504,
+  OK: 200,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  NOT_ACCEPTABLE: 406,
+  REQUEST_TIMEOUT: 408,
+  CONFLICT: 409,
+  CREATED: 201,
+} as const;
 
-export const INTERNAL_SERVER_ERROR = 500;
-
-export const GATEWAY_TIMEOUT = 504;
-
-export const OK = 200;
-
-export const BAD_REQUEST = 400;
-
-export const UNAUTHORIZED = 401;
-
-export const FORBIDDEN = 403;
-
-export const NOT_FOUND = 404;
-
-export const NOT_ACCEPTABLE = 406;
-
-export const REQUEST_TIMEOUT = 408;
-
-export const CONFLICT = 409;
-
-export const CREATED = 201;
-
-// ** http status phrases
-
-export const INTERNAL_SERVER_ERROR_MESSAGE = "Internal Server Error";
-
-export const GATEWAY_TIMEOUT_MESSAGE = "Gateway Timeout";
-
-export const OK_MESSAGE = "OK";
-
-export const BAD_REQUEST_MESSAGE = "Bad Request";
-
-export const UNAUTHORIZED_MESSAGE = "Unauthorized";
-
-export const FORBIDDEN_MESSAGE = "Forbidden";
-
-export const NOT_FOUND_MESSAGE = "Not Found";
-
-export const NOT_ACCEPTABLE_MESSAGE = "Not Acceptable";
-
-export const REQUEST_TIMEOUT_MESSAGE = "Request Timeout";
-
-export const CONFLICT_MESSAGE = "Conflict";
-
-export const CREATED_MESSAGE = "Created";
+// ** HTTP status phrases
+export const httpStatusMessages = {
+  INTERNAL_SERVER_ERROR: "Internal Server Error",
+  GATEWAY_TIMEOUT: "Gateway Timeout",
+  OK: "OK",
+  BAD_REQUEST: "Bad Request",
+  UNAUTHORIZED: "Unauthorized",
+  FORBIDDEN: "Forbidden",
+  NOT_FOUND: "Not Found",
+  NOT_ACCEPTABLE: "Not Acceptable",
+  REQUEST_TIMEOUT: "Request Timeout",
+  CONFLICT: "Conflict",
+  CREATED: "Created",
+} as const;

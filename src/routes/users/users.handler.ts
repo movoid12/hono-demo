@@ -2,7 +2,9 @@ import { z } from "@hono/zod-openapi";
 
 import type { AppRouteHandler } from "@/lib/types";
 
-import type { UserRoute } from "./users.routes";
+import { httpStatusMessages } from "@/utils/constants";
+
+import type { UserRoute, UserRouteCreate } from "./users.routes";
 
 export const usersSchema = z.array(z.object({
   name: z.string(),
@@ -11,8 +13,9 @@ export const usersSchema = z.array(z.object({
   mevAccepted: z.boolean(),
 }));
 
+// TODO: add async to the function when integrating with a database
 export const list: AppRouteHandler<UserRoute> = (c) => {
-  return c.json([
+  const users = [
     {
       name: "John Doe",
       email: "tGZQO@example.com",
@@ -37,5 +40,17 @@ export const list: AppRouteHandler<UserRoute> = (c) => {
       subscribed: true,
       mevAccepted: true,
     },
-  ]);
+  ];
+
+  return c.json(users);
+};
+
+// TODO: add async to the function when integrating with a database
+export const create: AppRouteHandler<UserRouteCreate> = (c) => {
+  // TODO: add create function when integrating with a database
+  const successfullRes = {
+    message: httpStatusMessages.CREATED,
+  };
+
+  return c.json(successfullRes);
 };

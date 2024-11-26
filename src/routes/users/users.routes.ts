@@ -1,6 +1,6 @@
 import { createRoute, z } from "@hono/zod-openapi";
 
-import createErrorSchema from "@/openapi/create-error-schema";
+import createErrorSchema from "@/openapi/schemas/create-error-schema";
 import { httpStatusCode, notFoundSchema } from "@/utils/constants";
 
 const tags = ["Users"];

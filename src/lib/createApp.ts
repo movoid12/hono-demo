@@ -7,7 +7,6 @@ import defaultHook from "@/openapi/default-hook";
 
 export function createRouter() {
   //* default hook will be applied to all routes in case of any zod validation error happens
-  //* https://docs.hono.dev/en/v2.0.0/reference/hono#default-hook
   return new OpenAPIHono({ strict: false, defaultHook });
 };
 

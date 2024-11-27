@@ -14,11 +14,13 @@ pnpm dev
 
 ```yml
 src/
-├── controllers/
+├── lib/
+├── openapi/
 ├── middleware/
 ├── routes/
 ├── services/
 ├── utils/
+├── app.ts
 └── index.ts
 ```
 

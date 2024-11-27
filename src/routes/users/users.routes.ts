@@ -1,27 +1,28 @@
 import { createRoute, z } from "@hono/zod-openapi";
 
 import createErrorSchema from "@/openapi/schemas/create-error-schema";
-import { httpStatusCode, notFoundSchema } from "@/utils/constants";
+import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
+import { httpStatusCode, httpStatusMessages, notFoundSchema } from "@/utils/constants";
 
 const tags = ["Users"];
 
-const messageObjectSchema = z.object({
-  message: z.string(),
-});
+const usersSchema = z.array(
+  z.object({
+    name: z.string(),
+    email: z.string().email(),
+    subscribed: z.boolean(),
+    mevAccepted: z.boolean(),
+  }),
+);
 
-const usersSchema = z.array(z.object({
-  name: z.string(),
-  email: z.string().email(),
-  subscribed: z.boolean(),
-  mevAccepted: z.boolean(),
-}));
-
-const newUserSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
-  subscribed: z.boolean(),
-  mevAccepted: z.boolean(),
-});
+const newUserSchema = z.object(
+  {
+    name: z.string(),
+    email: z.string().email(),
+    subscribed: z.boolean(),
+    mevAccepted: z.boolean(),
+  },
+);
 
 const idParamsSchema = z.object({
   id: z.coerce.number().openapi({
@@ -79,7 +80,7 @@ export const create = createRoute({
     [httpStatusCode.CREATED]: {
       content: {
         "application/json": {
-          schema: messageObjectSchema,
+          schema: createMessageObjectSchema(httpStatusMessages.CREATED),
         },
       },
       description: "Successfully Created",

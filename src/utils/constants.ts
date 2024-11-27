@@ -1,5 +1,11 @@
 import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
 
+export const ZOD_ERROR_MESSAGES = {
+  REQUIRED: "Required",
+  EXPECTED_NUMBER: "Expected number, received nan",
+  NO_UPDATES: "No updates provided",
+} as const;
+
 //* * HTTP status codes
 export const httpStatusCode = {
   INTERNAL_SERVER_ERROR: 500,

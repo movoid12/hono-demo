@@ -1,13 +1,25 @@
-### Required:
+### Prerequisites:
 
 - Node.js 22
-- latest pnpm
+- pnpm
+- Eslint Extension in your VSCode
 
 to start:
 
-```
+```yml
 pnpm install
+
 pnpm dev
+```
+
+to lint, execute tests and check types use the following commands:
+
+```sh [pnpm]
+pnpm lint
+
+pnpm test
+
+pnpm test:types
 ```
 
 ## Folder Structure
@@ -15,13 +27,12 @@ pnpm dev
 ```yml
 src/
 ├── lib/
-├── openapi/
 ├── middleware/
+├── openapi/
 ├── routes/
-├── services/
 ├── utils/
-├── app.ts
-└── index.ts
+├── app.ts // hono configs and index routes type
+└── index.ts // web server configs
 ```
 
 Check out:

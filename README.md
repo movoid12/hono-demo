@@ -14,14 +14,25 @@ pnpm dev
 
 ```yml
 src/
-├── controllers/
+├── lib/
+├── openapi/
 ├── middleware/
 ├── routes/
 ├── services/
 ├── utils/
+├── app.ts
 └── index.ts
 ```
 
-```
-open http://localhost:3000
+Check out:
+
+```py
+// API-INDEX:
+http://localhost:3000
+
+// API Documentation:
+http://localhost:3000/reference
+
+// API Doc:
+http://localhost:3000/doc
 ```

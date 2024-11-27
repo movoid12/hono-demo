@@ -1,20 +1,31 @@
-import { OpenAPIHono } from "@hono/zod-openapi";
+import index from "@/routes/index.route";
+import users from "@/routes/users/users.index";
 
-import notFound from "@/middleware/not-found";
-import onError from "@/middleware/on-error";
-import router from "@/routes";
+import configureOpenAPI from "./lib/configure-openapi";
+import createApp from "./lib/createApp";
 
-const app = new OpenAPIHono();
+const app = createApp();
 
-// routes
-app.route("/", router);
+configureOpenAPI(app);
 
-// error handlers
-app.notFound(notFound);
+// app.route("/", router);
 
-app.onError(onError);
+const routes = [
+  index,
+  users,
+];
+
+routes.forEach((route) => {
+  app.route("/", route);
+});
+
+//* by adding typeof and [number] we are getting the type of an array element
+//* learned from this --> https://www.totaltypescript.com/get-the-type-of-an-array-element
+type AppAsType = typeof routes;
+export type AppType = AppAsType[number];
 
 export default app;
+
 /*
 
 //** 1 - get the name using request parameter

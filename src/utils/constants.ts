@@ -1,3 +1,11 @@
+import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
+
+export const ZOD_ERROR_MESSAGES = {
+  REQUIRED: "Required",
+  EXPECTED_NUMBER: "Expected number, received nan",
+  NO_UPDATES: "No updates provided",
+} as const;
+
 //* * HTTP status codes
 export const httpStatusCode = {
   INTERNAL_SERVER_ERROR: 500,
@@ -11,6 +19,7 @@ export const httpStatusCode = {
   REQUEST_TIMEOUT: 408,
   CONFLICT: 409,
   CREATED: 201,
+  UNPROCESSABLE_ENTITY: 422,
 } as const;
 
 // ** HTTP status phrases
@@ -26,4 +35,10 @@ export const httpStatusMessages = {
   REQUEST_TIMEOUT: "Request Timeout",
   CONFLICT: "Conflict",
   CREATED: "Created",
+  UNPROCESSABLE_ENTITY: "Unprocessable Entity",
 } as const;
+
+export const notFoundSchema
+= createMessageObjectSchema(
+  httpStatusMessages.NOT_FOUND,
+);

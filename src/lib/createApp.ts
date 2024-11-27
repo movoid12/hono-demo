@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/filename-case */
 import { OpenAPIHono } from "@hono/zod-openapi";
+import { logger } from "hono/logger";
 
 import notFound from "@/middleware/not-found";
 import onError from "@/middleware/on-error";
@@ -13,7 +14,8 @@ export function createRouter() {
 export default function createApp() {
   const app = createRouter();
 
-  // error handlers
+  app.use(logger());
+
   app.notFound(notFound);
 
   app.onError(onError);

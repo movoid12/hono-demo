@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "aaron-bond.better-comments",
+    "irongeek.vscode-env",
+    "yoavbls.pretty-ts-errors"
+  ]
+}

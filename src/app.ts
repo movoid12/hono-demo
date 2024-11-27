@@ -8,8 +8,6 @@ const app = createApp();
 
 configureOpenAPI(app);
 
-// app.route("/", router);
-
 const routes = [
   index,
   users,
@@ -19,7 +17,7 @@ routes.forEach((route) => {
   app.route("/", route);
 });
 
-//* by adding typeof and [number] we are getting the type of an array element
+//* by adding typeof + [number] we are getting the type of an array element
 //* learned from this --> https://www.totaltypescript.com/get-the-type-of-an-array-element
 type AppAsType = typeof routes;
 export type AppType = AppAsType[number];

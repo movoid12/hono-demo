@@ -38,7 +38,7 @@ export const create = createRoute({
           schema: newUserSchema,
         },
       },
-      description: "New User",
+      description: "Create New User",
     },
   },
   responses: {
@@ -48,14 +48,14 @@ export const create = createRoute({
           schema: createMessageObjectSchema(httpStatusMessages.CREATED),
         },
       },
-      description: "Successfully Created",
+      description: "New user successfully created",
     },
 
   },
 });
 
 export const getOne = createRoute({
-  path: "/api/users/{id}",
+  path: "/api/users/:id",
   tags,
   method: "get",
   request: {

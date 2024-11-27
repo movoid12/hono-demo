@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "test:types": "tsc --noEmit"
   },
   "dependencies": {
     "@hono/node-server": "1.13.7",

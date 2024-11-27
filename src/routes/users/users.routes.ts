@@ -1,48 +1,13 @@
-import { createRoute, z } from "@hono/zod-openapi";
+import { createRoute } from "@hono/zod-openapi";
 
 import createErrorSchema from "@/openapi/schemas/create-error-schema";
 import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
+import { idParamsSchema } from "@/openapi/schemas/params-schema";
 import { httpStatusCode, httpStatusMessages, notFoundSchema } from "@/utils/constants";
 
+import { newUserSchema, selectedUserSchema, usersSchema } from "./users.schema";
+
 const tags = ["Users"];
-
-const usersSchema = z.array(
-  z.object({
-    name: z.string(),
-    email: z.string().email(),
-    subscribed: z.boolean(),
-    mevAccepted: z.boolean(),
-  }),
-);
-
-const newUserSchema = z.object(
-  {
-    name: z.string(),
-    email: z.string().email(),
-    subscribed: z.boolean(),
-    mevAccepted: z.boolean(),
-  },
-);
-
-const idParamsSchema = z.object({
-  id: z.coerce.number().openapi({
-    param: {
-      name: "id",
-      in: "path",
-      required: true,
-    },
-    required: ["id"],
-    example: 1,
-  }),
-});
-
-const selectedUser = z.object({
-  id: z.number(),
-  name: z.string(),
-  email: z.string().email(),
-  subscribed: z.boolean(),
-  mevAccepted: z.boolean(),
-}).optional();
 
 export const list = createRoute({
   path: "/api/users",
@@ -100,7 +65,7 @@ export const getOne = createRoute({
     [httpStatusCode.OK]: {
       content: {
         "application/json": {
-          schema: selectedUser,
+          schema: selectedUserSchema,
         },
       },
       description: "Get one user by ID",

@@ -1,11 +1,13 @@
-import { createRoute, z } from "@hono/zod-openapi";
+import { createRoute } from "@hono/zod-openapi";
 
 import { createRouter } from "@/lib/createApp";
 import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
 import { httpStatusCode, httpStatusMessages } from "@/utils/constants";
 
+const tags = ["Index"];
+
 const index = createRouter().openapi(createRoute({
-  tags: ["Index"],
+  tags,
   method: "get",
   path: "/",
   responses: {

@@ -4,41 +4,45 @@ import { httpStatusCode, httpStatusMessages } from "@/utils/constants";
 
 import type { UserRoute, UserRouteCreate, UserRouteGetOne } from "./users.routes";
 
-// TODO: add async to the function when integrating with a database
-export const list: AppRouteHandler<UserRoute> = (c) => {
-  const users = [
-    {
-      name: "John Doe",
-      email: "tGZQO@example.com",
-      subscribed: true,
-      mevAccepted: true,
-    },
-    {
-      name: "Jane Top",
-      email: "tGZQO@example.com",
-      subscribed: false,
-      mevAccepted: false,
-    },
-    {
-      name: "Bob Doe",
-      email: "tGZQO@example.com",
-      subscribed: false,
-      mevAccepted: true,
-    },
-    {
-      name: "Alex Doe",
-      email: "tGZQO@example.com",
-      subscribed: true,
-      mevAccepted: true,
-    },
-  ];
+const users = [
+  {
+    id: 1,
+    name: "John Doe",
+    email: "tGZQO@example.com",
+    subscribed: true,
+    mevAccepted: true,
+  },
+  {
+    id: 2,
+    name: "Jane Top",
+    email: "tGZQO@example.com",
+    subscribed: false,
+    mevAccepted: false,
+  },
+  {
+    id: 3,
+    name: "Bob Doe",
+    email: "tGZQO@example.com",
+    subscribed: false,
+    mevAccepted: true,
+  },
+  {
+    id: 4,
+    name: "Alex Doe",
+    email: "tGZQO@example.com",
+    subscribed: true,
+    mevAccepted: true,
+  },
+];
 
+export const list: AppRouteHandler<UserRoute> = (c) => {
+  // TODO: add getting list function when integrating with a database
   return c.json(users);
 };
 
-// TODO: add async to the function when integrating with a database
 export const create: AppRouteHandler<UserRouteCreate> = (c) => {
-  // TODO: add create function when integrating with a database
+  // TODO: add create/insert function when integrating with a database
+
   const successfullRes = {
     message: httpStatusMessages.CREATED,
   };
@@ -48,24 +52,6 @@ export const create: AppRouteHandler<UserRouteCreate> = (c) => {
 
 export const getOne: AppRouteHandler<UserRouteGetOne> = (c) => {
   const { id } = c.req.valid("param");
-
-  // Safely get the user from list by id and return
-  const users = [
-    {
-      id: 1,
-      name: "John Doe",
-      email: "tGZQO@example.com",
-      subscribed: true,
-      mevAccepted: true,
-    },
-    {
-      id: 2,
-      name: "Jane Top",
-      email: "tGZQO@example.com",
-      subscribed: false,
-      mevAccepted: false,
-    },
-  ];
 
   const user = users.find(user => user.id === id);
 

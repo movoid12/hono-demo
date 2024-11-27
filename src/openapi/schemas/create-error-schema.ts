@@ -2,7 +2,7 @@ import { z } from "@hono/zod-openapi";
 
 import type { ZodSchema } from "../helpers/types";
 
-function createErrorSchema<
+export default function createErrorSchema<
   T extends ZodSchema,
 >(schema: T) {
   const { error } = schema.safeParse(
@@ -33,5 +33,3 @@ function createErrorSchema<
       }),
   });
 }
-
-export default createErrorSchema;

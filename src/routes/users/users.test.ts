@@ -80,6 +80,7 @@ it("get api/users/{id} returns a not found message", async () => {
 it("create a new user and api/users route should returns a success message", async () => {
   const response = await client.api.users.$post({
     json: {
+      id: 5,
       name: "Jane Top",
       email: "tGZQO@example.com",
       subscribed: true,

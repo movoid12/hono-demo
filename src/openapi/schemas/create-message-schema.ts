@@ -1,6 +1,6 @@
 import { z } from "@hono/zod-openapi";
 
-function createMessageObjectSchema(exampleMessage: string = "Hello World") {
+export default function createMessageObjectSchema(exampleMessage: string = "Hello World") {
   return z.object({
     message: z.string(),
   }).openapi({
@@ -9,5 +9,3 @@ function createMessageObjectSchema(exampleMessage: string = "Hello World") {
     },
   });
 }
-
-export default createMessageObjectSchema;

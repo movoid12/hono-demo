@@ -11,9 +11,7 @@ export default function configureOpenAPI(app: AppOpenApi) {
       title: "Demo API",
       version: packageJson.version,
     },
-  });
-
-  app.get(
+  }).get(
     "/reference",
     apiReference({
       spec: {

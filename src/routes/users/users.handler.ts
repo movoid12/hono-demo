@@ -43,11 +43,9 @@ export const list: AppRouteHandler<UserRoute> = (c) => {
 export const create: AppRouteHandler<UserRouteCreate> = (c) => {
   // TODO: add create/insert function when integrating with a database
 
-  const successfullRes = {
+  return c.json({
     message: httpStatusMessages.CREATED,
-  };
-
-  return c.json(successfullRes);
+  }, httpStatusCode.CREATED);
 };
 
 export const getOne: AppRouteHandler<UserRouteGetOne> = (c) => {

@@ -1,6 +1,6 @@
 import { createRoute } from "@hono/zod-openapi";
 
-import { createRouter } from "@/lib/createApp";
+import { createRouter } from "@/lib/create-app";
 import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
 import { httpStatusCode, httpStatusMessages } from "@/utils/constants";
 

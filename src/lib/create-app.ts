@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/filename-case */
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { logger } from "hono/logger";
 

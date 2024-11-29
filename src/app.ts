@@ -1,8 +1,9 @@
+//correct the import 
 import index from "@/routes/index.route";
 import users from "@/routes/users/users.index";
 
 import configureOpenAPI from "./lib/configure-openapi";
-import createApp from "./lib/createApp";
+import createApp from "./lib/create-app";
 
 const app = createApp();
 

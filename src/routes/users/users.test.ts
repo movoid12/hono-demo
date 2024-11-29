@@ -2,7 +2,7 @@
 import { testClient } from "hono/testing";
 import { expect, expectTypeOf, it } from "vitest";
 
-import createApp from "@/lib/createApp";
+import createApp from "@/lib/create-app";
 import { httpStatusCode, httpStatusMessages, ZOD_ERROR_MESSAGES } from "@/utils/constants";
 
 import router from "./users.index";

@@ -3,13 +3,13 @@ import { testClient } from 'hono/testing';
 import { expect, expectTypeOf, it } from 'vitest';
 
 import {
+  ZOD_ERROR_MESSAGES,
   httpStatusCode,
   httpStatusMessages,
-  ZOD_ERROR_MESSAGES,
 } from '../../utils/constants';
 
-import router from './users.index';
 import createApp from '../../lib/create-app';
+import router from './users.index';
 
 const client = testClient(createApp().route('/', router));
 
@@ -40,7 +40,7 @@ it('get api/users/{id} returns a user', async () => {
 
   if (response.status === httpStatusCode.OK) {
     const json = await response.json();
-    // @ts-expect-error
+
     expect(json.name).toBe('Jane Top');
   }
 });

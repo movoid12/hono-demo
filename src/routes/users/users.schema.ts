@@ -18,14 +18,12 @@ const newUserSchema = z.object({
   mevAccepted: z.boolean(),
 });
 
-const selectedUserSchema = z
-  .object({
-    id: z.number(),
-    name: z.string(),
-    email: z.string().email(),
-    subscribed: z.boolean(),
-    mevAccepted: z.boolean(),
-  })
-  .optional();
+const selectedUserSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+  subscribed: z.boolean(),
+  mevAccepted: z.boolean(),
+});
 
 export { newUserSchema, selectedUserSchema, usersListSchema as usersSchema };

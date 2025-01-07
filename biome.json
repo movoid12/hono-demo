@@ -43,7 +43,19 @@
         },
         "useForOf": "warn",
         "useFragmentSyntax": "warn",
-        "useNamingConvention": "warn",
+        "useNamingConvention": {
+          "level": "warn",
+          "options": {
+            "conventions": [
+              {
+                "selector": {
+                  "kind": "objectLiteralProperty"
+                },
+                "formats": ["camelCase", "CONSTANT_CASE"]
+              }
+            ]
+          }
+        },
         "useShorthandAssign": "warn",
         "useThrowNewError": "warn",
         "useThrowOnlyError": "warn"

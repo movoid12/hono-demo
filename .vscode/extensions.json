@@ -1,4 +1,5 @@
 {
+  // add biome extension recommandtion
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "aaron-bond.better-comments",

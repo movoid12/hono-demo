@@ -1,9 +1,9 @@
-import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
+import createMessageObjectSchema from '../openapi/schemas/create-message-schema';
 
 export const ZOD_ERROR_MESSAGES = {
-  REQUIRED: "Required",
-  EXPECTED_NUMBER: "Expected number, received nan",
-  NO_UPDATES: "No updates provided",
+  REQUIRED: 'Required',
+  EXPECTED_NUMBER: 'Expected number, received nan',
+  NO_UPDATES: 'No updates provided',
 } as const;
 
 //* * HTTP status codes
@@ -24,21 +24,20 @@ export const httpStatusCode = {
 
 // ** HTTP status phrases
 export const httpStatusMessages = {
-  INTERNAL_SERVER_ERROR: "Internal Server Error",
-  GATEWAY_TIMEOUT: "Gateway Timeout",
-  OK: "OK",
-  BAD_REQUEST: "Bad Request",
-  UNAUTHORIZED: "Unauthorized",
-  FORBIDDEN: "Forbidden",
-  NOT_FOUND: "Not Found",
-  NOT_ACCEPTABLE: "Not Acceptable",
-  REQUEST_TIMEOUT: "Request Timeout",
-  CONFLICT: "Conflict",
-  CREATED: "Created",
-  UNPROCESSABLE_ENTITY: "Unprocessable Entity",
+  INTERNAL_SERVER_ERROR: 'Internal Server Error',
+  GATEWAY_TIMEOUT: 'Gateway Timeout',
+  OK: 'OK',
+  BAD_REQUEST: 'Bad Request',
+  UNAUTHORIZED: 'Unauthorized',
+  FORBIDDEN: 'Forbidden',
+  NOT_FOUND: 'Not Found',
+  NOT_ACCEPTABLE: 'Not Acceptable',
+  REQUEST_TIMEOUT: 'Request Timeout',
+  CONFLICT: 'Conflict',
+  CREATED: 'Created',
+  UNPROCESSABLE_ENTITY: 'Unprocessable Entity',
 } as const;
 
-export const notFoundSchema
-= createMessageObjectSchema(
+export const notFoundSchema = createMessageObjectSchema(
   httpStatusMessages.NOT_FOUND,
 );

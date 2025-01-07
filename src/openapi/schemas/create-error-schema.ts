@@ -1,15 +1,10 @@
-import { z } from "@hono/zod-openapi";
+import { z } from '@hono/zod-openapi';
 
-import type { ZodSchema } from "../helpers/types";
+import type { ZodSchema } from '../helpers/types';
 
-export default function createErrorSchema<
-  T extends ZodSchema,
->(schema: T) {
+export default function createErrorSchema<T extends ZodSchema>(schema: T) {
   const { error } = schema.safeParse(
-    schema._def.typeName
-    === z.ZodFirstPartyTypeKind.ZodArray
-      ? []
-      : {},
+    schema._def.typeName === z.ZodFirstPartyTypeKind.ZodArray ? [] : {},
   );
   return z.object({
     success: z.boolean().openapi({
@@ -20,9 +15,7 @@ export default function createErrorSchema<
         issues: z.array(
           z.object({
             code: z.string(),
-            path: z.array(
-              z.union([z.string(), z.number()]),
-            ),
+            path: z.array(z.union([z.string(), z.number()])),
             message: z.string().optional(),
           }),
         ),

@@ -1,15 +1,19 @@
 /* eslint-disable ts/ban-ts-comment */
-import { testClient } from "hono/testing";
-import { expect, expectTypeOf, it } from "vitest";
+import { testClient } from 'hono/testing';
+import { expect, expectTypeOf, it } from 'vitest';
 
-import createApp from "@/lib/create-app";
-import { httpStatusCode, httpStatusMessages, ZOD_ERROR_MESSAGES } from "@/utils/constants";
+import {
+  httpStatusCode,
+  httpStatusMessages,
+  ZOD_ERROR_MESSAGES,
+} from '../../utils/constants';
 
-import router from "./users.index";
+import router from './users.index';
+import createApp from '../../lib/create-app';
 
-const client = testClient(createApp().route("/", router));
+const client = testClient(createApp().route('/', router));
 
-it("should return a list of users", async () => {
+it('should return a list of users', async () => {
   const response = await client.api.users.$get();
 
   expect(response.status).toBe(httpStatusCode.OK);
@@ -25,8 +29,8 @@ it("should return a list of users", async () => {
 
 //* get one user
 
-it("get api/users/{id} returns a user", async () => {
-  const response = await client.api.users[":id"].$get({
+it('get api/users/{id} returns a user', async () => {
+  const response = await client.api.users[':id'].$get({
     param: {
       id: 2,
     },
@@ -36,16 +40,16 @@ it("get api/users/{id} returns a user", async () => {
 
   if (response.status === httpStatusCode.OK) {
     const json = await response.json();
-
-    expect(json.name).toBe("Jane Top");
+    // @ts-expect-error
+    expect(json.name).toBe('Jane Top');
   }
 });
 
-it("get api/users/{id} validates the id param", async () => {
-  const response = await client.api.users[":id"].$get({
+it('get api/users/{id} validates the id param', async () => {
+  const response = await client.api.users[':id'].$get({
     param: {
       // @ts-expect-error
-      id: "abc",
+      id: 'abc',
     },
   });
 
@@ -53,14 +57,17 @@ it("get api/users/{id} validates the id param", async () => {
 
   if (response.status === httpStatusCode.UNPROCESSABLE_ENTITY) {
     const json = await response.json();
-
-    expect(json.error.issues[0].path[0]).toBe("id");
-    expect(json.error.issues[0].message).toBe(ZOD_ERROR_MESSAGES.EXPECTED_NUMBER);
+    // @ts-expect-error
+    expect(json.error.issues[0].path[0]).toBe('id');
+    // @ts-expect-error
+    expect(json.error.issues[0].message).toBe(
+      ZOD_ERROR_MESSAGES.EXPECTED_NUMBER,
+    );
   }
 });
 
-it("get api/users/{id} returns a not found message", async () => {
-  const response = await client.api.users[":id"].$get({
+it('get api/users/{id} returns a not found message', async () => {
+  const response = await client.api.users[':id'].$get({
     param: {
       id: 5,
     },
@@ -77,12 +84,12 @@ it("get api/users/{id} returns a not found message", async () => {
 
 //* create a new user
 
-it("create a new user and api/users route should returns a success message", async () => {
+it('create a new user and api/users route should returns a success message', async () => {
   const response = await client.api.users.$post({
     json: {
       id: 5,
-      name: "Jane Top",
-      email: "tGZQO@example.com",
+      name: 'Jane Top',
+      email: 'tGZQO@example.com',
       subscribed: true,
       mevAccepted: true,
     },

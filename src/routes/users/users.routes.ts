@@ -1,90 +1,93 @@
-import { createRoute } from "@hono/zod-openapi";
+import { createRoute } from '@hono/zod-openapi';
 
-import createErrorSchema from "@/openapi/schemas/create-error-schema";
-import createMessageObjectSchema from "@/openapi/schemas/create-message-schema";
-import { idParamsSchema } from "@/openapi/schemas/params-schema";
-import { httpStatusCode, httpStatusMessages, notFoundSchema } from "@/utils/constants";
+import createErrorSchema from '../../openapi/schemas/create-error-schema';
+import createMessageObjectSchema from '../../openapi/schemas/create-message-schema';
+import { idParamsSchema } from '../../openapi/schemas/params-schema';
+import {
+  httpStatusCode,
+  httpStatusMessages,
+  notFoundSchema,
+} from '../../utils/constants';
 
-import { newUserSchema, selectedUserSchema, usersSchema } from "./users.schema";
+import { newUserSchema, selectedUserSchema, usersSchema } from './users.schema';
 
-const tags = ["Users"];
+const tags = ['Users'];
 
 export const list = createRoute({
-  path: "/api/users",
+  path: '/api/users',
   tags,
-  method: "get",
+  method: 'get',
   responses: {
     [httpStatusCode.OK]: {
       content: {
-        "application/json": {
+        'application/json': {
           schema: usersSchema,
         },
       },
-      description: "The List of Users",
+      description: 'The List of Users',
     },
   },
 });
 
 export const create = createRoute({
-  path: "/api/users",
+  path: '/api/users',
   tags,
-  method: "post",
+  method: 'post',
   request: {
     body: {
-      application: "json",
+      application: 'json',
       required: true,
       content: {
-        "application/json": {
+        'application/json': {
           schema: newUserSchema,
         },
       },
-      description: "Create New User",
+      description: 'Create New User',
     },
   },
   responses: {
     [httpStatusCode.CREATED]: {
       content: {
-        "application/json": {
+        'application/json': {
           schema: createMessageObjectSchema(httpStatusMessages.CREATED),
         },
       },
-      description: "New user successfully created",
+      description: 'New user successfully created',
     },
-
   },
 });
 
 export const getOne = createRoute({
-  path: "/api/users/:id",
+  path: '/api/users/:id',
   tags,
-  method: "get",
+  method: 'get',
   request: {
     params: idParamsSchema,
   },
   responses: {
     [httpStatusCode.OK]: {
       content: {
-        "application/json": {
+        'application/json': {
           schema: selectedUserSchema,
         },
       },
-      description: "Get one user by ID",
+      description: 'Get one user by ID',
     },
     [httpStatusCode.NOT_FOUND]: {
       content: {
-        "application/json": {
+        'application/json': {
           schema: notFoundSchema,
         },
       },
-      description: "User not found",
+      description: 'User not found',
     },
     [httpStatusCode.UNPROCESSABLE_ENTITY]: {
       content: {
-        "application/json": {
+        'application/json': {
           schema: createErrorSchema(idParamsSchema),
         },
       },
-      description: "Validation Error",
+      description: 'Validation Error',
     },
   },
 });

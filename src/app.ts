@@ -1,21 +1,18 @@
-//correct the import 
-import index from "@/routes/index.route";
-import users from "@/routes/users/users.index";
-
-import configureOpenAPI from "./lib/configure-openapi";
-import createApp from "./lib/create-app";
+// correct the import
+import configureOpenApi from './lib/configure-openapi';
+import createApp from './lib/create-app';
+import index from './routes/index.route';
+import users from './routes/users/users.index';
 
 const app = createApp();
 
-configureOpenAPI(app);
+configureOpenApi(app);
 
-const routes = [
-  index,
-  users,
-];
+const routes = [index, users];
 
+// biome-ignore lint/complexity/noForEach: <explanation>
 routes.forEach((route) => {
-  app.route("/", route);
+  app.route('/', route);
 });
 
 //* by adding typeof + [number] we are getting the type of an array element
@@ -31,7 +28,6 @@ export default app;
 Example URL: http://localhost:3000/data
 app.get("/:name", (c) => {
   const nameOftheUser = c.req.param("name");
-
   const response = c.text(`Hello world!!!!! ${nameOftheUser}`);
 //** OUTPUT => Hello world!!!!! data
 

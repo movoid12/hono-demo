@@ -3,7 +3,7 @@ import { createRoute, z } from '@hono/zod-openapi';
 
 import createErrorSchema from '../../openapi/schemas/create-error-schema';
 import createMessageObjectSchema from '../../openapi/schemas/create-message-schema';
-import { idParamsSchema } from '../../openapi/schemas/params-schema';
+import { idParamsSchema } from '../../openapi/schemas/id-params-schema';
 import { httpStatusCode, notFoundSchema } from '../../utils/constants';
 
 const usersListSchema = z.array(

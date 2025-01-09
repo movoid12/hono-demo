@@ -2,13 +2,12 @@
 import { testClient } from 'hono/testing';
 import { expect, expectTypeOf, it } from 'vitest';
 
+import { createApp } from '../../openapi/helpers/create-app';
 import {
   ZOD_ERROR_MESSAGES,
   httpStatusCode,
   httpStatusMessages,
 } from '../../utils/constants';
-
-import createApp from '../../lib/create-app';
 import router from './users.index';
 
 const client = testClient(createApp().route('/', router));

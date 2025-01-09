@@ -1,4 +1,5 @@
 import createMessageObjectSchema from '../openapi/schemas/create-message-schema';
+// import * as http from 'node:http';
 
 export const ZOD_ERROR_MESSAGES = {
   REQUIRED: 'Required',
@@ -7,6 +8,10 @@ export const ZOD_ERROR_MESSAGES = {
 } as const;
 
 //* * HTTP status codes
+// export const httpStatusCode = Object.fromEntries(
+//   Object.entries(http.STATUS_CODES).map(([key, value]) => [value, Number(key)])
+// );
+
 export const httpStatusCode = {
   INTERNAL_SERVER_ERROR: 500,
   GATEWAY_TIMEOUT: 504,

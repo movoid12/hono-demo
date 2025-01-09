@@ -1,6 +1,7 @@
 // correct the import
-import configureOpenApi from './lib/configure-openapi';
-import createApp from './lib/create-app';
+import configureOpenApi from './openapi/helpers/configure-openapi';
+import { createApp } from './openapi/helpers/create-app';
+
 import index from './routes/index.route';
 import users from './routes/users/users.index';
 
@@ -18,6 +19,7 @@ routes.forEach((route) => {
 //* by adding typeof + [number] we are getting the type of an array element
 //* learned from this --> https://www.totaltypescript.com/get-the-type-of-an-array-element
 type AppAsType = typeof routes;
+
 export type AppType = AppAsType[number];
 
 export default app;

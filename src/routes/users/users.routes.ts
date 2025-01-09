@@ -1,15 +1,36 @@
-import { createRoute } from '@hono/zod-openapi';
+import * as http from 'node:http';
+import { createRoute, z } from '@hono/zod-openapi';
 
 import createErrorSchema from '../../openapi/schemas/create-error-schema';
 import createMessageObjectSchema from '../../openapi/schemas/create-message-schema';
 import { idParamsSchema } from '../../openapi/schemas/params-schema';
-import {
-  httpStatusCode,
-  httpStatusMessages,
-  notFoundSchema,
-} from '../../utils/constants';
+import { httpStatusCode, notFoundSchema } from '../../utils/constants';
 
-import { newUserSchema, selectedUserSchema, usersSchema } from './users.schema';
+const usersListSchema = z.array(
+  z.object({
+    id: z.number(),
+    name: z.string(),
+    email: z.string().email(),
+    subscribed: z.boolean(),
+    mevAccepted: z.boolean(),
+  }),
+);
+
+const newUserSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+  subscribed: z.boolean(),
+  mevAccepted: z.boolean(),
+});
+
+const selectedUserSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+  subscribed: z.boolean(),
+  mevAccepted: z.boolean(),
+});
 
 const tags = ['Users'];
 
@@ -21,7 +42,7 @@ export const list = createRoute({
     [httpStatusCode.OK]: {
       content: {
         'application/json': {
-          schema: usersSchema,
+          schema: usersListSchema,
         },
       },
       description: 'The List of Users',
@@ -49,10 +70,18 @@ export const create = createRoute({
     [httpStatusCode.CREATED]: {
       content: {
         'application/json': {
-          schema: createMessageObjectSchema(httpStatusMessages.CREATED),
+          schema: createMessageObjectSchema(http.STATUS_CODES[201]),
         },
       },
       description: 'New user successfully created',
+    },
+    [httpStatusCode.UNPROCESSABLE_ENTITY]: {
+      content: {
+        'application/json': {
+          schema: createErrorSchema(newUserSchema),
+        },
+      },
+      description: 'Validation Error',
     },
   },
 });
@@ -91,9 +120,3 @@ export const getOne = createRoute({
     },
   },
 });
-
-export type UserRoute = typeof list;
-
-export type UserRouteCreate = typeof create;
-
-export type UserRouteGetOne = typeof getOne;

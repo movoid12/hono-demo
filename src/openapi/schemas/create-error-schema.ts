@@ -1,6 +1,8 @@
 import { z } from '@hono/zod-openapi';
 
-import type { ZodSchema } from '../helpers/types';
+export type ZodSchema =
+  // @ts-expect-error
+  z.ZodUnion | z.AnyZodObject | z.ZodArray<z.AnyZodObject>;
 
 export default function createErrorSchema<T extends ZodSchema>(schema: T) {
   const { error } = schema.safeParse(

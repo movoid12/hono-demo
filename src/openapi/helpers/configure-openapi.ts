@@ -1,7 +1,7 @@
 import { apiReference } from '@scalar/hono-api-reference';
 
 import type { OpenAPIHono } from '@hono/zod-openapi';
-import packageJson from '../../package.json';
+import packageJson from '../../../package.json';
 
 export default function configureOpenApi(app: OpenAPIHono) {
   app

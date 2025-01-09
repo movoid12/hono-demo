@@ -1,5 +1,5 @@
 import type { ErrorHandler } from 'hono';
-import type { StatusCode } from 'hono/utils/http-status';
+import type { ContentfulStatusCode } from 'hono/utils/http-status';
 
 import { httpStatusCode } from '../utils/constants';
 
@@ -9,9 +9,9 @@ const onError: ErrorHandler = (err, c) => {
 
   const statusCode =
     currentStatus !== httpStatusCode.OK
-      ? (currentStatus as StatusCode)
+      ? (currentStatus as ContentfulStatusCode)
       : httpStatusCode.INTERNAL_SERVER_ERROR;
-  // @ts-expect-error
+
   return c.json({ message: err.message }, statusCode);
 };
 

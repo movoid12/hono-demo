@@ -3,8 +3,9 @@ import {
   type RouteConfig,
   type RouteHandler,
 } from '@hono/zod-openapi';
+import { httpStatusCode } from '../../utils/constants';
+import type { Context } from 'hono';
 
-import defaultHook from '../default-hook';
 
 // interface AppBindings {
 //   Variables: {
@@ -17,6 +18,19 @@ import defaultHook from '../default-hook';
 
 // TODO: add AppBindings to RouteHandler next to R generic
 export type AppRouteHandler<R extends RouteConfig> = RouteHandler<R>;
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const defaultHook = (result: any, c: Context) => {
+  if (!result.success) {
+    return c.json(
+      {
+        success: result.success,
+        error: result.error,
+      },
+      httpStatusCode.UNPROCESSABLE_ENTITY,
+    );
+  }
+};
 
 export function createRouter() {
   //* default hook will be applied to all routes in case of any zod validation error happens

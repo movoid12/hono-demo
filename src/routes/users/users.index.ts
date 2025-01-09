@@ -1,7 +1,7 @@
 import {
   type AppRouteHandler,
   createRouter,
-} from '../../openapi/helpers/create-app';
+} from '../../openapi/helpers/create-router';
 import { httpStatusCode, httpStatusMessages } from '../../utils/constants';
 import * as routes from './users.routes';
 

@@ -3,9 +3,7 @@ import {
   type RouteConfig,
   type RouteHandler,
 } from '@hono/zod-openapi';
-import { logger } from 'hono/logger';
-import notFound from '../../middleware/not-found';
-import onError from '../../middleware/on-error';
+
 import defaultHook from '../default-hook';
 
 // interface AppBindings {
@@ -23,16 +21,4 @@ export type AppRouteHandler<R extends RouteConfig> = RouteHandler<R>;
 export function createRouter() {
   //* default hook will be applied to all routes in case of any zod validation error happens
   return new OpenAPIHono({ strict: false, defaultHook: defaultHook });
-}
-
-export function createApp() {
-  const app = createRouter();
-
-  app.use(logger());
-
-  app.notFound(notFound);
-
-  app.onError(onError);
-
-  return app;
 }

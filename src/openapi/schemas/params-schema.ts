@@ -11,5 +11,3 @@ export const idParamsSchema = z.object({
     example: 1,
   }),
 });
-
-

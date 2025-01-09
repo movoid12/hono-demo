@@ -2,7 +2,7 @@
 import { testClient } from 'hono/testing';
 import { expect, expectTypeOf, it } from 'vitest';
 
-import { createApp } from '../../openapi/helpers/create-app';
+import { createRouter } from '../../openapi/helpers/create-router';
 import {
   ZOD_ERROR_MESSAGES,
   httpStatusCode,
@@ -10,7 +10,7 @@ import {
 } from '../../utils/constants';
 import router from './users.index';
 
-const client = testClient(createApp().route('/', router));
+const client = testClient(createRouter().route('/', router));
 
 it('should return a list of users', async () => {
   const response = await client.api.users.$get();

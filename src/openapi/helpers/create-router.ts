@@ -3,9 +3,8 @@ import {
   type RouteConfig,
   type RouteHandler,
 } from '@hono/zod-openapi';
-import { httpStatusCode } from '../../utils/constants';
 import type { Context } from 'hono';
-
+import { httpStatusCode } from '../../utils/constants';
 
 // interface AppBindings {
 //   Variables: {

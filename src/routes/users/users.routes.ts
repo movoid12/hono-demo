@@ -120,3 +120,33 @@ export const getOne = createRoute({
     },
   },
 });
+
+export const deleteOne = createRoute({
+  path: '/api/users/:id',
+  tags,
+  method: 'delete',
+  request: {
+    params: idParamsSchema,
+  },
+  responses: {
+    [httpStatusCode.OK]: {
+      description: 'User successfully deleted',
+    },
+    [httpStatusCode.NO_CONTENT]: {
+      content: {
+        'application/json': {
+          schema: createMessageObjectSchema(http.STATUS_CODES[204]),
+        },
+      },
+      description: 'User not found',
+    },
+  },
+  [httpStatusCode.BAD_REQUEST]: {
+    content: {
+      'application/json': {
+        schema: createErrorSchema(idParamsSchema),
+      },
+    },
+    description: 'Validation Error',
+  },
+});

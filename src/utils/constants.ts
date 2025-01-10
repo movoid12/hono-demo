@@ -24,6 +24,8 @@ export const httpStatusCode = {
   REQUEST_TIMEOUT: 408,
   CONFLICT: 409,
   CREATED: 201,
+  // add 204 httpstatus code
+  NO_CONTENT: 204,
   UNPROCESSABLE_ENTITY: 422,
 } as const;
 
@@ -40,6 +42,7 @@ export const httpStatusMessages = {
   REQUEST_TIMEOUT: 'Request Timeout',
   CONFLICT: 'Conflict',
   CREATED: 'Created',
+  NO_CONTENT: 'No Content',
   UNPROCESSABLE_ENTITY: 'Unprocessable Entity',
 } as const;
 

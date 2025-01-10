@@ -39,14 +39,24 @@ const getUser: AppRouteHandler<typeof routes.getOne> = (c) => {
   return c.json(user, httpStatusCode.OK);
 };
 
+const deleteUser: AppRouteHandler<typeof routes.deleteOne> = (c) => {
+  // TODO: add delete function when integrating with a database
+  return c.json(
+    {
+      message: httpStatusMessages.OK,
+    },
+    httpStatusCode.OK,
+  );
+};
+
 // * Routes
 const users = createRouter()
   .openapi(routes.list, getUsersList)
   .openapi(routes.create, createUser)
-  .openapi(routes.getOne, getUser);
+  .openapi(routes.getOne, getUser)
+  .openapi(routes.deleteOne, deleteUser);
 
 export default users;
-
 
 const usersMock = [
   {

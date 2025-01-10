@@ -45,6 +45,9 @@ const users = createRouter()
   .openapi(routes.create, createUser)
   .openapi(routes.getOne, getUser);
 
+export default users;
+
+
 const usersMock = [
   {
     id: 1,
@@ -75,5 +78,3 @@ const usersMock = [
     mevAccepted: true,
   },
 ];
-
-export default users;

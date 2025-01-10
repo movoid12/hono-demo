@@ -1,6 +1,6 @@
 /* eslint-disable ts/ban-ts-comment */
 import { testClient } from 'hono/testing';
-import { expect, expectTypeOf, it, describe } from 'vitest';
+import { describe, expect, expectTypeOf, it } from 'vitest';
 
 import { createRouter } from '../../openapi/helpers/create-router';
 import {
@@ -11,7 +11,6 @@ import {
 import router from './users.index';
 
 const client = testClient(createRouter().route('/', router));
-
 
 describe('Route -> api/users/', () => {
   it('GET: api/users/ should return a list of users', async () => {
@@ -27,7 +26,6 @@ describe('Route -> api/users/', () => {
       expect(json.length).toBe(4);
     }
   });
-
 
   //* get one user
 
@@ -102,7 +100,19 @@ describe('Route -> api/users/', () => {
 
       expect(json.message).toBe(httpStatusMessages.CREATED);
     }
-  })
+  });
 
+  it('DELETE: api/users/:id should delete a user', async () => {
+    const response = await client.api.users[':id'].$delete({
+      param: {
+        id: 2,
+      },
+    });
+
+    if (response.status === httpStatusCode.OK) {
+      const json = await response.json();
+      // @ts-expect-error
+      expect(json.message).toBe(httpStatusMessages.OK);
+    }
+  });
 });
-

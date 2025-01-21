@@ -8,6 +8,13 @@ import { createRouter } from './openapi/helpers/create-router';
 import index from './routes/index.route';
 import users from './routes/users/users.index';
 
+//* by adding typeof + [number] we are getting the type of an array element
+//* learned from this --> https://www.totaltypescript.com/get-the-type-of-an-array-element
+type AppAsType = typeof routes;
+
+export type AppType = AppAsType[number];
+
+//* Creates the Hono App Main instance.
 function createApp() {
   const app = createRouter();
 
@@ -20,27 +27,18 @@ function createApp() {
   return app;
 }
 
-const app = createApp();
+export const app = createApp();
 
 configureOpenApi(app);
 
 const routes = [index, users];
 
-// biome-ignore lint/complexity/noForEach: <explanation>
-routes.forEach((route) => {
+
+for (const route of routes) {
   app.route('/', route);
-});
-
-//* by adding typeof + [number] we are getting the type of an array element
-//* learned from this --> https://www.totaltypescript.com/get-the-type-of-an-array-element
-type AppAsType = typeof routes;
-
-export type AppType = AppAsType[number];
-
-export default app;
+}
 
 /*
-
 //** 1 - get the name using request parameter
 Example URL: http://localhost:3000/data
 app.get("/:name", (c) => {

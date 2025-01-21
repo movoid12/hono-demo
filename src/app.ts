@@ -1,37 +1,48 @@
-//correct the import 
-import index from "@/routes/index.route";
-import users from "@/routes/users/users.index";
+// correct the import
+import { logger } from 'hono/logger';
+import configureOpenApi from './openapi/helpers/configure-openapi';
 
-import configureOpenAPI from "./lib/configure-openapi";
-import createApp from "./lib/create-app";
-
-const app = createApp();
-
-configureOpenAPI(app);
-
-const routes = [
-  index,
-  users,
-];
-
-routes.forEach((route) => {
-  app.route("/", route);
-});
+import notFound from './handlers/not-found';
+import onError from './handlers/on-error';
+import { createRouter } from './openapi/helpers/create-router';
+import index from './routes/index.route';
+import users from './routes/users/users.index';
 
 //* by adding typeof + [number] we are getting the type of an array element
 //* learned from this --> https://www.totaltypescript.com/get-the-type-of-an-array-element
 type AppAsType = typeof routes;
+
 export type AppType = AppAsType[number];
 
-export default app;
+//* Creates the Hono App Main instance.
+function createApp() {
+  const app = createRouter();
+
+  app.use(logger());
+
+  app.notFound(notFound);
+
+  app.onError(onError);
+
+  return app;
+}
+
+export const app = createApp();
+
+configureOpenApi(app);
+
+const routes = [index, users];
+
+
+for (const route of routes) {
+  app.route('/', route);
+}
 
 /*
-
 //** 1 - get the name using request parameter
 Example URL: http://localhost:3000/data
 app.get("/:name", (c) => {
   const nameOftheUser = c.req.param("name");
-
   const response = c.text(`Hello world!!!!! ${nameOftheUser}`);
 //** OUTPUT => Hello world!!!!! data
 

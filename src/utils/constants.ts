@@ -1,4 +1,5 @@
 import createMessageObjectSchema from '../openapi/schemas/create-message-schema';
+// TODO: add after making sure no type errors in httpStatusMessages
 // import * as http from 'node:http';
 
 export const ZOD_ERROR_MESSAGES = {
@@ -8,6 +9,7 @@ export const ZOD_ERROR_MESSAGES = {
 } as const;
 
 //* * HTTP status codes
+// TODO: add after making sure no type errors in httpStatusMessages
 // export const httpStatusCode = Object.fromEntries(
 //   Object.entries(http.STATUS_CODES).map(([key, value]) => [value, Number(key)])
 // );

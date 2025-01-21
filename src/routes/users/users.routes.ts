@@ -35,7 +35,7 @@ const selectedUserSchema = z.object({
 const tags = ['Users'];
 
 export const list = createRoute({
-  path: '/api/users',
+  path: '/users',
   tags,
   method: 'get',
   responses: {
@@ -51,7 +51,7 @@ export const list = createRoute({
 });
 
 export const create = createRoute({
-  path: '/api/users',
+  path: '/users',
   tags,
   method: 'post',
   request: {
@@ -87,7 +87,7 @@ export const create = createRoute({
 });
 
 export const getOne = createRoute({
-  path: '/api/users/:id',
+  path: '/users/:id',
   tags,
   method: 'get',
   request: {
@@ -122,7 +122,7 @@ export const getOne = createRoute({
 });
 
 export const deleteOne = createRoute({
-  path: '/api/users/:id',
+  path: '/users/:id',
   tags,
   method: 'delete',
   request: {

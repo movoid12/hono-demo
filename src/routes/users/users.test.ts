@@ -8,13 +8,15 @@ import {
   httpStatusCode,
   httpStatusMessages,
 } from '../../utils/constants';
-import router from './users.index';
+import users from './users.index';
 
-const client = testClient(createRouter().route('/', router));
+const usersRoute = createRouter().route('/', users);
 
-describe('Route -> api/users/', () => {
-  it('GET: api/users/ should return a list of users', async () => {
-    const response = await client.api.users.$get();
+const client = testClient(usersRoute);
+
+describe('Route -> users/', () => {
+  it('GET: users/ should return a list of users', async () => {
+    const response = await client.users.$get();
 
     expect(response.status).toBe(httpStatusCode.OK);
 
@@ -29,8 +31,8 @@ describe('Route -> api/users/', () => {
 
   //* get one user
 
-  it('GET: api/users/:id returns a user', async () => {
-    const response = await client.api.users[':id'].$get({
+  it('GET: users/:id returns a user', async () => {
+    const response = await client.users[':id'].$get({
       param: {
         id: 2,
       },
@@ -45,8 +47,8 @@ describe('Route -> api/users/', () => {
     }
   });
 
-  it('GET: api/users/:id validates the id param', async () => {
-    const response = await client.api.users[':id'].$get({
+  it('GET: users/:id validates the id param', async () => {
+    const response = await client.users[':id'].$get({
       param: {
         // @ts-expect-error
         id: 'abc',
@@ -66,8 +68,8 @@ describe('Route -> api/users/', () => {
     }
   });
 
-  it('GET: api/users/:id returns a not found message', async () => {
-    const response = await client.api.users[':id'].$get({
+  it('GET: users/:id returns a not found message', async () => {
+    const response = await client.users[':id'].$get({
       param: {
         id: 5,
       },
@@ -84,8 +86,8 @@ describe('Route -> api/users/', () => {
 
   //* create a new user
 
-  it('POST: api/users/ create a new user and api/users route should returns a success message', async () => {
-    const response = await client.api.users.$post({
+  it('POST: users/ create a new user and users route should returns a success message', async () => {
+    const response = await client.users.$post({
       json: {
         id: 5,
         name: 'Jane Top',
@@ -102,8 +104,8 @@ describe('Route -> api/users/', () => {
     }
   });
 
-  it('DELETE: api/users/:id should delete a user', async () => {
-    const response = await client.api.users[':id'].$delete({
+  it('DELETE: users/:id should delete a user', async () => {
+    const response = await client.users[':id'].$delete({
       param: {
         id: 2,
       },

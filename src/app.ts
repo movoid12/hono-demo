@@ -33,7 +33,6 @@ configureOpenApi(app);
 
 const routes = [index, users];
 
-
 for (const route of routes) {
   app.route('/', route);
 }

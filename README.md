@@ -7,6 +7,8 @@
 to start:
 
 ```yml
+nvm use
+
 pnpm install
 
 pnpm dev
@@ -15,7 +17,9 @@ pnpm dev
 to lint, execute tests and check types use the following commands:
 
 ```sh [pnpm]
-pnpm lint
+pnpm format
+
+pnpm check
 
 pnpm test
 
@@ -26,9 +30,9 @@ pnpm test:types
 
 ```yml
 src/
-├── lib/
-├── middleware/
-├── openapi/
+├── handlers/
+├── openapi/helpers
+├── openapi/schemas
 ├── routes/
 ├── utils/
 ├── app.ts // hono configs and index routes type
@@ -37,7 +41,7 @@ src/
 
 Check out:
 
-```py
+```sh
 // API-INDEX:
 http://localhost:3000
 

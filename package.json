@@ -12,18 +12,18 @@
     "test:types": "tsc --noEmit"
   },
   "dependencies": {
-    "@hono/node-server": "1.13.7",
-    "@hono/zod-openapi": "0.18.3",
-    "@scalar/hono-api-reference": "0.5.167",
-    "hono": "4.6.17",
-    "zod": "3.24.1"
+    "@hono/node-server": "1.13.8",
+    "@hono/zod-openapi": "0.19.10",
+    "@scalar/hono-api-reference": "0.5.184",
+    "hono": "4.6.20",
+    "zod": "3.25.76"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.2.4",
     "@total-typescript/tsconfig": "1.0.4",
-    "@types/node": "22.10.7",
-    "tsx": "4.19.2",
-    "typescript": "5.7.3",
-    "vitest": "2.1.8"
+    "@types/node": "22.18.5",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2",
+    "vitest": "2.1.9"
   }
 }

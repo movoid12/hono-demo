@@ -50,7 +50,6 @@ describe('Route -> users/', () => {
   it('GET: users/:id validates the id param', async () => {
     const response = await client.users[':id'].$get({
       param: {
-        // @ts-expect-error
         id: 'abc',
       },
     });

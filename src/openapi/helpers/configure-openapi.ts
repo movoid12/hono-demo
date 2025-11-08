@@ -21,7 +21,7 @@ export default function configureOpenApi(app: OpenAPIHono) {
         layout: 'classic',
         theme: 'kepler',
         defaultHttpClient: {
-          targetKey: 'javascript',
+          targetKey: 'js',
           clientKey: 'fetch',
         },
       }),

@@ -2,7 +2,6 @@
   "name": "hono-demo",
   "type": "module",
   "version": "1.0.0",
-  "packageManager": "pnpm@9.14.2",
   "scripts": {
     "build": "tsc && tsc-alias",
     "dev": "tsx watch src/index.ts",
@@ -22,6 +21,7 @@
     "@biomejs/biome": "2.2.4",
     "@total-typescript/tsconfig": "1.0.4",
     "@types/node": "22.18.5",
+    "tsc-alias": "^1.8.16",
     "tsx": "4.20.5",
     "typescript": "5.9.2",
     "vitest": "2.1.9"

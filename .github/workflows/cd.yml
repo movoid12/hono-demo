@@ -1,4 +1,4 @@
-name: Deploy Isabell's Website to Uberspace
+name: Deploy to Uberspace
 on:
   push:
     branches: [main]

@@ -18,7 +18,7 @@ import { httpStatusCode } from '../../utils/constants';
 // TODO: add AppBindings to RouteHandler next to R generic
 export type AppRouteHandler<R extends RouteConfig> = RouteHandler<R>;
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: imp to have
 const defaultHook = (result: any, c: Context) => {
   if (!result.success) {
     return c.json(

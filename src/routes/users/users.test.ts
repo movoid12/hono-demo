@@ -4,9 +4,9 @@ import { describe, expect, expectTypeOf, it } from 'vitest';
 
 import { createRouter } from '../../openapi/helpers/create-router';
 import {
-  ZOD_ERROR_MESSAGES,
   httpStatusCode,
   httpStatusMessages,
+  ZOD_ERROR_MESSAGES,
 } from '../../utils/constants';
 import users from './users.index';
 

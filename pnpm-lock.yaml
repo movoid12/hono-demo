@@ -20,6 +20,9 @@ importers:
       hono:
         specifier: 4.10.4
         version: 4.10.4
+      nosecone:
+        specifier: 1.0.0-beta.14
+        version: 1.0.0-beta.14
       zod:
         specifier: 4.1.12
         version: 4.1.12
@@ -749,6 +752,10 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
+  nosecone@1.0.0-beta.14:
+    resolution: {integrity: sha512-3PKsklY156B1MjgzSGNaKpgY0nC9vUY2zjRIncNGz+hOW5f6oqU89vCbuaO561l/FlotFNpit0HjmQeO8nyMww==}
+    engines: {node: '>=20'}
+
   openapi3-ts@4.5.0:
     resolution: {integrity: sha512-jaL+HgTq2Gj5jRcfdutgRGLosCy/hT8sQf6VOy+P+g36cZOjI1iukdPnijC+4CmeRzg/jEllJUboEic2FhxhtQ==}
 
@@ -1476,6 +1483,8 @@ snapshots:
   nanoid@3.3.8: {}
 
   normalize-path@3.0.0: {}
+
+  nosecone@1.0.0-beta.14: {}
 
   openapi3-ts@4.5.0:
     dependencies:

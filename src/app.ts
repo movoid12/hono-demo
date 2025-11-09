@@ -1,5 +1,6 @@
 // correct the import
 import { logger } from 'hono/logger';
+import nosecone from "nosecone";
 import notFound from './handlers/not-found';
 import onError from './handlers/on-error';
 import configureOpenApi from './openapi/helpers/configure-openapi';
@@ -16,12 +17,27 @@ export type AppType = AppAsType[number];
 //* Creates the Hono App Main instance.
 function createApp() {
   const app = createRouter();
+  
 
   app.use(logger());
 
   app.notFound(notFound);
 
   app.onError(onError);
+
+  // Middleware to add Nosecone library security headers on every route
+  app.use('*', async (c, next) => {
+    await next();
+  
+    const headers = nosecone();
+
+  Object.entries(headers).forEach(([key, value]) => {
+    c.header(key, value);
+  });
+
+
+
+  });
 
   return app;
 }

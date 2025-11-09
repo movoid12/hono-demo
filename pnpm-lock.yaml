@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@arcjet/ip':
+        specifier: 1.0.0-beta.14
+        version: 1.0.0-beta.14
       '@hono/node-server':
         specifier: 1.19.6
         version: 1.19.6(hono@4.10.4)
@@ -50,6 +53,10 @@ importers:
         version: 2.1.9(@types/node@24.10.0)
 
 packages:
+
+  '@arcjet/ip@1.0.0-beta.14':
+    resolution: {integrity: sha512-8XvqiNF2wcK6DfSDB8u9qGYh8oyXPKWspJcTQWy2USAXFj0vrfUW8NIxNkATU0e88Y8tN/WhhFZvhkRFzB60EQ==}
+    engines: {node: '>=20'}
 
   '@asteasolutions/zod-to-openapi@8.1.0':
     resolution: {integrity: sha512-tQFxVs05J/6QXXqIzj6rTRk3nj1HFs4pe+uThwE95jL5II2JfpVXkK+CqkO7aT0Do5AYqO6LDrKpleLUFXgY+g==}
@@ -949,6 +956,8 @@ packages:
     resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
 
 snapshots:
+
+  '@arcjet/ip@1.0.0-beta.14': {}
 
   '@asteasolutions/zod-to-openapi@8.1.0(zod@4.1.12)':
     dependencies:

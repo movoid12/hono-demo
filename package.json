@@ -14,6 +14,7 @@
     "test:types": "tsc --noEmit"
   },
   "dependencies": {
+    "@arcjet/ip": "1.0.0-beta.14",
     "@hono/node-server": "1.19.6",
     "@hono/zod-openapi": "1.1.4",
     "@scalar/hono-api-reference": "0.5.184",

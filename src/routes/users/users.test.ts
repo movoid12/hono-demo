@@ -4,9 +4,9 @@ import { describe, expect, expectTypeOf, it } from 'vitest';
 
 import { createRouter } from '../../openapi/helpers/create-router';
 import {
-  ZOD_ERROR_MESSAGES,
   httpStatusCode,
   httpStatusMessages,
+  ZOD_ERROR_MESSAGES,
 } from '../../utils/constants';
 import users from './users.index';
 
@@ -50,7 +50,6 @@ describe('Route -> users/', () => {
   it('GET: users/:id validates the id param', async () => {
     const response = await client.users[':id'].$get({
       param: {
-        // @ts-expect-error
         id: 'abc',
       },
     });

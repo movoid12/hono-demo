@@ -6,7 +6,7 @@ export type ZodSchema =
 
 export default function createErrorSchema<T extends ZodSchema>(schema: T) {
   const { error } = schema.safeParse(
-    schema._def.typeName === z.ZodFirstPartyTypeKind.ZodArray ? [] : {},
+    schema._def.typeName === z.ZodArray ? [] : {},
   );
   return z.object({
     success: z.boolean().openapi({

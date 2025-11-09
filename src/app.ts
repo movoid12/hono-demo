@@ -1,9 +1,8 @@
 // correct the import
 import { logger } from 'hono/logger';
-import configureOpenApi from './openapi/helpers/configure-openapi';
-
 import notFound from './handlers/not-found';
 import onError from './handlers/on-error';
+import configureOpenApi from './openapi/helpers/configure-openapi';
 import { createRouter } from './openapi/helpers/create-router';
 import index from './routes/index.route';
 import users from './routes/users/users.index';

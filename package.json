@@ -5,25 +5,28 @@
   "scripts": {
     "build": "tsc && tsc-alias",
     "dev": "tsx watch src/index.ts",
-    "check": "biome check --error-on-warnings",
-    "format": "biome format --write",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "lint": "biome lint --fix",
+    "start": "tsx src/index.ts",
     "test": "vitest run",
     "test:types": "tsc --noEmit"
   },
   "dependencies": {
-    "@hono/node-server": "1.13.8",
-    "@hono/zod-openapi": "0.19.10",
+    "@hono/node-server": "1.19.6",
+    "@hono/zod-openapi": "1.1.4",
     "@scalar/hono-api-reference": "0.5.184",
-    "hono": "4.6.20",
-    "zod": "3.25.76"
+    "hono": "4.10.4",
+    "zod": "4.1.12"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
     "@total-typescript/tsconfig": "1.0.4",
-    "@types/node": "22.18.5",
+    "@types/node": "24.10.0",
     "tsc-alias": "^1.8.16",
-    "tsx": "4.20.5",
-    "typescript": "5.9.2",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
     "vitest": "2.1.9"
   }
 }
